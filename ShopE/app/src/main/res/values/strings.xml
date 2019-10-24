@@ -4,4 +4,7 @@
     <string name="backgroundColor">#006699</string>
     <string name="buy_now_button_text">Buy Now</string>
     <string name="add_to_cart_button_text">Add To Cart</string>
+    <string name="description_text">Description</string>
+    <string name="Options">Options</string>
+
 </resources>
