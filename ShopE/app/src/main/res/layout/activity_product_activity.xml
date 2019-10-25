@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".product_activity">
 
     <ImageView
         android:id="@+id/productImageView"
@@ -35,7 +35,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:text="@string/buy_now_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/productImageView" />
@@ -53,40 +53,52 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Button"
+        android:onClick="addToCart"
+        android:text="@string/add_to_cart_button_text"
         app:layout_constraintBaseline_toBaselineOf="@+id/buyNow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="301dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="buy_click"
         app:layout_constraintBottom_toTopOf="@+id/buyNow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/productImageView"
-        app:layout_constraintTop_toBottomOf="@+id/productImageView">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImageView"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBox_addToWishList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:onClick="saveUnsave"
+                android:text="@string/notSaved" />
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/Options"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/description_text"
+                android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
 

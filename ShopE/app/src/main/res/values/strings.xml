@@ -6,5 +6,7 @@
     <string name="add_to_cart_button_text">Add To Cart</string>
     <string name="description_text">Description</string>
     <string name="Options">Options</string>
+    <string name="notSaved">Add to Wish List</string>
+    <string name="saved">Added to Wish List</string>
 
 </resources>
