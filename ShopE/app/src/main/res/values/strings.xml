@@ -9,4 +9,9 @@
     <string name="notSaved">Add to Wish List</string>
     <string name="saved">Added to Wish List</string>
 
+
+    <!--Start activity resources -->
+    <string name="shop_tag">Home for Buyers</string>
+
+
 </resources>
