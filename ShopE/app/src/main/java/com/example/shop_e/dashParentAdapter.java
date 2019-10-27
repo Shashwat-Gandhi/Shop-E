@@ -40,7 +40,7 @@ public class dashParentAdapter extends RecyclerView.Adapter<dashParentAdapter.Vi
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         holder.recyclerView.setHasFixedSize(true);
 
-        childItemForDash childItem = new childItemForDash("Title",R.drawable.category_jeans_button);
+        childItemForDash childItem = new childItemForDash("Title",R.drawable.shirt_white);
         childList = new ArrayList<>();
         childList.add(childItem);
         childList.add(childItem);

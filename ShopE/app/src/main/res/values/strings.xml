@@ -10,8 +10,14 @@
     <string name="saved">Added to Wish List</string>
 
 
+    <!--common resources -->
+    <string name="temp_text">temp_text</string>
+
     <!--Start activity resources -->
     <string name="shop_tag">Home for Buyers</string>
 
+    <!--dashboard resources-->
+
+    <string name="key">keysfordash</string>
 
 </resources>

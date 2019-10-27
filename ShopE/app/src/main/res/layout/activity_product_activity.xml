@@ -7,6 +7,17 @@
     android:background="@color/backgroundColor"
     tools:context=".product_activity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/single_product_recycler_view">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <ImageView
         android:id="@+id/productImageView"
         android:layout_width="0dp"

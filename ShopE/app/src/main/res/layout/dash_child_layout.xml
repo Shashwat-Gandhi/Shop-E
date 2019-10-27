@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:padding="10dp"
-        android:maxWidth="@dimen/dash_product_dimension"
-        android:maxHeight="@dimen/dash_product_dimension"
-        android:src="@drawable/category_kurtas_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        android:layout_width="@dimen/dash_product_dimension_x"
+        android:layout_height="@dimen/dash_product_dimension_y"
+
+        android:maxWidth="@dimen/dash_product_dimension_x"
+        android:maxHeight="@dimen/dash_product_dimension_y"
+        android:src="@drawable/shirt_white"
+
         android:id="@+id/dash_child_image"/>
 
     <TextView
+        app:layout_constraintLeft_toLeftOf="@id/dash_child_image"
+        app:layout_constraintTop_toBottomOf="@id/dash_child_image"
+        app:layout_constraintRight_toRightOf="@id/dash_child_image"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dash_child_name_text"
         android:text="@string/temp_text"
+
         />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

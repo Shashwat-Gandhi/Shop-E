@@ -1,7 +1,9 @@
 package com.example.shop_e;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.ViewHolder> {
+import static androidx.core.content.ContextCompat.startActivity;
 
+public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.ViewHolder> {
+    private String str = "com.example.shop_e";
     List<childItemForDash>childList;
     Context context;
 
@@ -31,10 +35,19 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         childItemForDash childItem = childList.get(position);
         holder.textView.setText(childItem.getTitle());
         holder.imageView.setImageResource(childItem.getSrc());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,product_activity.class);
+                int[] image_sources = {R.drawable.shirt_white,R.drawable.shirt_white,R.drawable.shirt_white,R.drawable.shirt_white};
+                intent.putExtra("dashdashdash",image_sources);
+                startActivity(context,intent,new Bundle());
+            }
+        });
     }
 
     @Override
