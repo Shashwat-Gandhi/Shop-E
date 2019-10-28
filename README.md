@@ -20,5 +20,6 @@ Day 3:
 Day 4:
 	added the functionality of clicking a product from the dashboard that takes us to the activity 
 	of the single product showing its different images.
+	And some unfinished work of adding all the products and their details
 	
 	

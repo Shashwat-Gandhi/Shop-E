@@ -28,7 +28,7 @@ public class product_activity extends AppCompatActivity {
         productRecyclerView.setHasFixedSize(true);
         int[] imagesSource = intent.getIntArrayExtra("dashdashdash");
         this.imageSources = imagesSource;
-        singleproduct_adapter = new single_product_adapter(imageSources);
+        singleproduct_adapter = new single_product_adapter(imageSources,this);
         productRecyclerView.setAdapter(singleproduct_adapter);
     }
 
@@ -48,6 +48,7 @@ public class product_activity extends AppCompatActivity {
     //when buy now is clicked
     public void buy_click(View view) {
         //open buy activity
+
     }
 
     //when to add to cart is clicked

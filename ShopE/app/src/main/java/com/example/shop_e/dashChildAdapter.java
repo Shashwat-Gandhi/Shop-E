@@ -38,12 +38,16 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         childItemForDash childItem = childList.get(position);
         holder.textView.setText(childItem.getTitle());
+        holder.textView.setText(((MyApplication)context.getApplicationContext()).getString());
         holder.imageView.setImageResource(childItem.getSrc());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,product_activity.class);
-                int[] image_sources = {R.drawable.shirt_white,R.drawable.shirt_white,R.drawable.shirt_white,R.drawable.shirt_white};
+                int[] image_sources = {R.drawable.black_shirt_pos1,
+                        R.drawable.black_shirt_pos2,
+                        R.drawable.black_shirt_pos3,
+                        R.drawable.black_shirt_pos4};
                 intent.putExtra("dashdashdash",image_sources);
                 startActivity(context,intent,new Bundle());
             }

@@ -60,6 +60,5 @@ public class DashboardActivity extends AppCompatActivity {
        adapterForDash = new dashParentAdapter(parentList,this);
        recyclerViewForDash.setAdapter(adapterForDash);
 
-
     }
 }

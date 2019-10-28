@@ -1,5 +1,8 @@
 package com.example.shop_e;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +11,15 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class single_product_adapter extends RecyclerView.Adapter<single_product_adapter.ViewHolder> {
     int[] imageSources;
+    Context context;
 
-    public single_product_adapter(int[] imageSources) {
+    public single_product_adapter(int[] imageSources,Context context) {
         this.imageSources = imageSources;
+        this.context = context;
     }
 
     @NonNull
@@ -23,8 +30,17 @@ public class single_product_adapter extends RecyclerView.Adapter<single_product_
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.imageView.setImageResource(imageSources[position]);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,only_image_activity.class);
+                intent.putExtra("com.example.shop_e.only_image_image",imageSources[position]);
+                startActivity(context,intent, new Bundle());
+            }
+        });
     }
 
     @Override
