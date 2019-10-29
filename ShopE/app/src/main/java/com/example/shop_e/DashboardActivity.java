@@ -61,4 +61,9 @@ public class DashboardActivity extends AppCompatActivity {
        recyclerViewForDash.setAdapter(adapterForDash);
 
     }
+    public void viewCart(View view) {
+        Intent intent = new Intent(this,ShowCartActivity.class);
+        startActivity(intent);
+    }
+
 }

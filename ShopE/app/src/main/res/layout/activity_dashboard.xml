@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +10,15 @@
     android:orientation="vertical"
     tools:context=".DashboardActivity">
 
+    <Button
+        android:id="@+id/viewCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#B31A1A"
+        android:text="@string/cart"
+        android:textColor="#B8A814"
+        android:textSize="18sp"
+        android:onClick="viewCart"/>
 
     <!--for category list recycle view only-->
     <androidx.recyclerview.widget.RecyclerView
@@ -19,13 +30,12 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dash_main_recview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/dash_main_recview"
         >
 
     </androidx.recyclerview.widget.RecyclerView>
 
-
-
 </LinearLayout>
+

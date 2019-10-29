@@ -107,28 +107,13 @@ public class product_activity extends AppCompatActivity {
         if(cart_presence_changed) {
             if(product_in_cart) {
                 StringBuffer userStringBuffer = new StringBuffer();
-                try (BufferedReader reader =new BufferedReader(new FileReader(new File(this.getFilesDir(),"userData")))){
-                    String line = reader.readLine();
-                    while(line != null) {
-                        userStringBuffer.append(line).append('\n');
-                        line = reader.readLine();
-                    }
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try{
-                    FileOutputStream outputStream = openFileOutput("userData", Context.MODE_PRIVATE);
-                    String addition = (((MyApplication)this.getApplication()).charTypeIndexOfProduct + "");
-                    userStringBuffer.append(addition).append('\n');
-                    outputStream.write(userStringBuffer.toString().getBytes());
-                    outputStream.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
+               readIntoBuffer(userStringBuffer,this);
+                String addition = (((MyApplication)this.getApplication()).charTypeIndexOfProduct + "");
+                userStringBuffer.append(addition).append('\n');
+               writeFromBuffer(userStringBuffer,this);
             }
             else {
+                /**finds the line in which the product index is and removes it ***/
                 StringBuffer userStringBuffer = new StringBuffer();
                 try (BufferedReader reader = new BufferedReader(new FileReader(new File(this.getFilesDir(),"userData")))){
                     String line = reader.readLine();
@@ -146,16 +131,35 @@ public class product_activity extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 //write to the file
-                try {
-                    FileOutputStream outputStream = openFileOutput("userData",Context.MODE_PRIVATE);
-                    outputStream.write(userStringBuffer.toString().getBytes());
-                    outputStream.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
+                writeFromBuffer(userStringBuffer,this);
             }
+        }
+    }
+
+    //read from the file into the string buffer
+    void readIntoBuffer(StringBuffer stringBuffer,Context context) {
+        try (BufferedReader reader =new BufferedReader(new FileReader(new File(context.getFilesDir(),"userData")))){
+            String line = reader.readLine();
+            while(line != null) {
+                stringBuffer.append(line).append('\n');
+                line = reader.readLine();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    void writeFromBuffer(StringBuffer stringBuffer,Context context) {
+        try{
+            FileOutputStream outputStream = openFileOutput("userData", Context.MODE_PRIVATE);
+
+            outputStream.write(stringBuffer.toString().getBytes());
+            outputStream.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

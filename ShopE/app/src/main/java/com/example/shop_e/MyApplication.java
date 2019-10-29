@@ -27,4 +27,5 @@ public class MyApplication extends Application {
     StringBuffer stringBufferOfBuyedProducts = new StringBuffer();
     int numProductInCart = 0;
     char charTypeIndexOfProduct = (char)(0);
+
 }
