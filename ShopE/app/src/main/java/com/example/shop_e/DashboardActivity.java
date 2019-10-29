@@ -55,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
        parentList.add(new parentItemForDash("Jeans"));
        parentList.add(new parentItemForDash("Shirt"));
        parentList.add(new parentItemForDash("T-Shirt"));
-       parentList.add(new parentItemForDash("tracks"));
+       parentList.add(new parentItemForDash("Tracks"));
 
        adapterForDash = new dashParentAdapter(parentList,this);
        recyclerViewForDash.setAdapter(adapterForDash);

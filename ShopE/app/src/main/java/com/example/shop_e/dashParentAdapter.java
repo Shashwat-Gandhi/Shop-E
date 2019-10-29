@@ -17,8 +17,8 @@ import java.util.List;
 public class dashParentAdapter extends RecyclerView.Adapter<dashParentAdapter.ViewHolder> {
     private List<parentItemForDash>parentList;
     private Context context;
-    private RecyclerView.Adapter adapterForcChild;
-    List<childItemForDash>childList;
+    private RecyclerView.Adapter adapterForChild;
+
 
 
     public dashParentAdapter(List<parentItemForDash> headingText, Context context) {
@@ -35,19 +35,14 @@ public class dashParentAdapter extends RecyclerView.Adapter<dashParentAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         parentItemForDash parentItem = parentList.get(position);
         holder.headingTextView.setText(parentItem.getName());
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         holder.recyclerView.setHasFixedSize(true);
 
-        childItemForDash childItem = new childItemForDash("Title",R.drawable.shirt_white);
-        childList = new ArrayList<>();
-        childList.add(childItem);
-        childList.add(childItem);
-        childList.add(childItem);
-
-        adapterForcChild = new dashChildAdapter(childList,context);
-        holder.recyclerView.setAdapter(adapterForcChild);
+        adapterForChild = new dashChildAdapter(1,3,context);
+        holder.recyclerView.setAdapter(adapterForChild);
 
     }
 

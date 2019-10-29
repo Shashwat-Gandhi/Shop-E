@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:layout_gravity="center"
-        >
+        android:backgroundTint="#4CAF50">
 
-        <ImageButton
-            android:id="@+id/category_button"
-            android:layout_width="@dimen/category_button_dimensions"
-            android:layout_height="@dimen/category_button_dimensions"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#4CAF50"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            android:scaleType="fitXY"
-            android:src="@drawable/shirt_white" />
+            <ImageButton
+                android:id="@+id/category_button"
+                android:layout_width="@dimen/category_button_dimensions"
+                android:layout_height="@dimen/category_button_dimensions"
+
+                android:background="@drawable/jeans_cat_button"
+                android:scaleType="fitXY"
+                android:src="@drawable/jeans_cat_button" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

@@ -2,7 +2,7 @@ package com.example.shop_e;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,15 +18,17 @@ import java.util.List;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.ViewHolder> {
-    private String str = "com.example.shop_e";
-    List<childItemForDash>childList;
+
+    int size;
+    int startIndex;
     Context context;
 
-    public dashChildAdapter(List<childItemForDash> childList, Context context) {
-        this.childList = childList;
+
+    public dashChildAdapter(int startIndex,int size,Context context) {
+        this.size = size;
+        this.startIndex = startIndex;
         this.context = context;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,10 +38,10 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        childItemForDash childItem = childList.get(position);
-        holder.textView.setText(childItem.getTitle());
-        holder.textView.setText(((MyApplication)context.getApplicationContext()).getString());
-        holder.imageView.setImageResource(childItem.getSrc());
+
+        holder.textView.setText(((MyApplication)context.getApplicationContext()).products.get(startIndex + position).getName());
+
+        holder.imageView.setImageResource(((MyApplication)context.getApplicationContext()).products.get(startIndex + position).getSrc());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +51,7 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
                         R.drawable.black_shirt_pos3,
                         R.drawable.black_shirt_pos4};
                 intent.putExtra("dashdashdash",image_sources);
+                ((MyApplication)context.getApplicationContext()).charTypeIndexOfProduct = (char)(startIndex + position);
                 startActivity(context,intent,new Bundle());
             }
         });
@@ -56,7 +59,7 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
 
     @Override
     public int getItemCount() {
-        return childList.size();
+        return size;
     }
 
     public class ViewHolder extends  RecyclerView.ViewHolder {

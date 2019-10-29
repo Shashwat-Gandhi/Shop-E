@@ -4,10 +4,15 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/dash_head_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/temp_text"
-        android:id="@+id/dash_head_text" />
+        android:background="#00D10707"
+        android:backgroundTint="#00440808"
+        android:fontFamily="monospace"
+        android:text="Kurtas"
+        android:textColor="#550707"
+        android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

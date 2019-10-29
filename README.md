@@ -22,4 +22,8 @@ Day 4:
 	of the single product showing its different images.
 	And some unfinished work of adding all the products and their details
 	
-	
+
+
+
+	:
+	added the functionality of being able to add and remove the products from the cart.
