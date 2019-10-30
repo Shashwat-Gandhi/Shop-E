@@ -5,4 +5,7 @@
     <dimen name="dash_product_dimension_x">250dp</dimen>
     <dimen name="dash_product_dimension_y">180dp</dimen>
     <dimen name="dash_product_dimension_xby2">125dp</dimen>
+    <dimen name="margin_button_1">10dp</dimen>
+    <dimen name="margin_button_2_r_l">15dp</dimen>
+    <dimen name="margin_button_2_t">5dp</dimen>
 </resources>

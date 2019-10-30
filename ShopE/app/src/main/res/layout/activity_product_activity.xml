@@ -7,19 +7,6 @@
     android:background="@color/backgroundColor"
     tools:context=".product_activity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/single_product_recycler_view">
-
-
-
-    </androidx.recyclerview.widget.RecyclerView>
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -27,6 +14,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/black_shirt_pos1" />
     <Button
         android:id="@+id/buyNow"
         android:layout_width="198dp"
@@ -58,6 +54,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -88,8 +85,86 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Options"
+                android:text="Price"
+                android:textColor="#2196F3" />
+
+            <TextView
+                android:id="@+id/textView_price_of_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temp_text"
+                android:textColor="#03A9F4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/size"
                 android:textSize="24sp" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/size_S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_button_1"
+                    android:onClick="optionSelected_S"
+                    android:text="@string/S"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/size_M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_button_1"
+                    android:onClick="optionSelected_M"
+                    android:text="@string/M"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/size_L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_button_1"
+                    android:onClick="optionSelected_L"
+                    android:text="@string/L"
+                    android:textSize="30sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+
+                >
+
+                <Button
+                    android:id="@+id/size_XL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_button_2_r_l"
+                    android:onClick="optionSelected_XL"
+                    android:text="@string/XL"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/size_XXL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_button_2_r_l"
+                    android:onClick="optionSelected_XXL"
+                    android:text="@string/XXL"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView2"
@@ -97,7 +172,24 @@
                 android:layout_height="wrap_content"
                 android:text="@string/description_text"
                 android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description_text_value" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF5722"
+        android:onClick="viewCart"
+        android:text="View Cart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

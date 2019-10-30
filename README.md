@@ -27,3 +27,8 @@ Day 4:
 
 	:
 	added the functionality of being able to add and remove the products from the cart.
+	changed some of the features,now to remove the product you have to go to the cart view.
+	you can choose the size that you want.
+	added cart view.
+	you can buy product directly from product activity or cart view
+	

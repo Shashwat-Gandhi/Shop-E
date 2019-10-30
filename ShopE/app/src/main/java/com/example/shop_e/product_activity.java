@@ -1,55 +1,52 @@
 package com.example.shop_e;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class product_activity extends AppCompatActivity {
 
-    RecyclerView productRecyclerView;
-    RecyclerView.Adapter singleproduct_adapter;
-    private boolean product_in_cart = false;
-    private boolean cart_presence_changed = false;
-    Intent intent;
+    public Button[] button = new Button[5];
+    int option = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_activity);
-        intent = getIntent();
 
-        //layout code
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setImageResource(((MyApplication)this.getApplication()).getProduct((int)((MyApplication)this.getApplication()).charTypeIndexOfProduct).getSrc());
 
-        productRecyclerView = findViewById(R.id.single_product_recycler_view);
-        productRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        productRecyclerView.setHasFixedSize(true);
-        int[] imagesSource = intent.getIntArrayExtra("dashdashdash");
+        //initialize buttons;
+        button[0] = findViewById(R.id.size_S);
+        button[1] = findViewById(R.id.size_M);
+        button[2] =  findViewById(R.id.size_L);
+        button[3] =  findViewById(R.id.size_XL);
+        button[4] = findViewById(R.id.size_XXL);
 
-        singleproduct_adapter = new single_product_adapter(imagesSource, this);
-        productRecyclerView.setAdapter(singleproduct_adapter);
-
-
-        //cart functionality
-        Button addToCartButton = findViewById(R.id.addToCart);
-        product_in_cart = ((MyApplication) this.getApplication()).cart.findProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct);
-        if (product_in_cart) {
-            addToCartButton.setText("Remove From Cart");
-        } else {
-            addToCartButton.setText("Add To Cart");
+        //coloring option buttons
+        button[0].setBackgroundColor(Color.DKGRAY);
+        for(int i=1;i < 5;i++) {
+            button[i].setBackgroundColor(Color.GRAY);
         }
 
+        //coloring other buttons
+        Button addToCart = findViewById(R.id.addToCart);
+        addToCart.setBackgroundColor(Color.GRAY);
+        Button buyNow = findViewById(R.id.buyNow);
+        buyNow.setBackgroundColor(Color.GRAY);
+
+        //writing the price of product
+        TextView priceText = findViewById(R.id.textView_price_of_product);
+        int index =((MyApplication)this.getApplication()).charTypeIndexOfProduct;
+        Product product = ((MyApplication)this.getApplication()).products.get(index);
+        priceText.setText("Rs " + String.valueOf(product.getPrice()));
     }
 
     //activated when add to wish list is pressed
@@ -67,20 +64,39 @@ public class product_activity extends AppCompatActivity {
     //when buy now is clicked
     public void buy_click(View view) {
         //open buy activity
+        /*********** don't forget to set the size of the product before showing the invoice         *********/
 
     }
 
     //when to add to cart is clicked
     public void addToCart(View view) {
-        Button button = (Button) view;
-        cart_presence_changed = !cart_presence_changed;
-        if (!product_in_cart) {
-            product_in_cart = true;
-            button.setText(R.string.remove_from_cart);
-        } else if (product_in_cart) {
-            product_in_cart = false;
-            button.setText(R.string.add_to_cart_button_text);
+        //just adds the product to the cart as many times you hit it
+        ((MyApplication) this.getApplication()).cart.addProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct, this);
+        switch (option) {
+            case 0:
+                ((MyApplication)this.getApplication()).cart.getProduct
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("S");
+                break;
+            case 1:
+                ((MyApplication)this.getApplication()).cart.getProduct
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("L");
+                break;
+            case 2:
+                ((MyApplication)this.getApplication()).cart.getProduct
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("M");
+                break;
+            case 3:
+                ((MyApplication)this.getApplication()).cart.getProduct
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("XL");
+                break;
+            case 4:
+                ((MyApplication)this.getApplication()).cart.getProduct
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("XXL");
+                break;
+            default:
+                break;
         }
+
 
     }
 
@@ -88,41 +104,38 @@ public class product_activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        updateCart();
-        //write to the file
-       // ((MyApplication) this.getApplication()).cart.saveProducts(this, "userData");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
         //updateCart();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        //cart functionality
-        //Button addToCartButton = findViewById(R.id.addToCart);
-        //product_in_cart = ((MyApplication) this.getApplication()).cart.findProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct);
-       // if (product_in_cart) {
-      //      addToCartButton.setText("Remove From Cart");
-      //  } else {
-     //       addToCartButton.setText("Add To Cart");
-    //    }
+    public void optionSelected_S(View v) {
+        button[option].setBackgroundColor(Color.GRAY);
+        option = 0;
+        button[option].setBackgroundColor(Color.DKGRAY);
+    }
+    public void optionSelected_M(View v) {
+        button[option].setBackgroundColor(Color.GRAY);
+        option = 1;
+        button[option].setBackgroundColor(Color.DKGRAY);
+    }
+    public void optionSelected_L(View v) {
+        button[option].setBackgroundColor(Color.GRAY);
+        option = 2;
+        button[option].setBackgroundColor(Color.DKGRAY);
+    }
+    public void optionSelected_XL(View v) {
+        button[option].setBackgroundColor(Color.GRAY);
+        option = 3;
+        button[option].setBackgroundColor(Color.DKGRAY);
+    }
+    public void optionSelected_XXL(View v) {
+        button[option].setBackgroundColor(Color.GRAY);
+        option = 4;
+        button[option].setBackgroundColor(Color.DKGRAY);
     }
 
-    private void updateCart() {
-        if (cart_presence_changed) {
-            if (product_in_cart) {
-                ((MyApplication) this.getApplication()).cart.addProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct, this);
-
-            } else {
-                ((MyApplication) this.getApplication()).cart.removeProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct);
-
-            }
-        }
+    public void viewCart(View view) {
+        Intent intent = new Intent(this,ShowCartActivity.class);
+        startActivity(intent, new Bundle());
     }
 }

@@ -10,25 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartClass {
-    private List<Product>products = new ArrayList<>();
+    public List<Product>products = new ArrayList<>();
 
-    //adds the product in the product list in cart
+    //adds new instance and not a reference to the product in the product list in cart
     void addProduct(int indexInProductList, Context context) {
-        products.add(((MyApplication)context.getApplicationContext()).products.get(indexInProductList));
+        Product pro = ((MyApplication)context.getApplicationContext()).products.get(indexInProductList);
+        Product product = new Product(pro.getName(),pro.getColor(),pro.getPrice(),pro.getSrc(),pro.getSize(),pro.getType(),pro.getIndex());
+        products.add(product);
     }
 
-    //removes the product from the product list in cart
-    void removeProduct(int indexInProductList) {
-        int indexInCart = -1;
-        for(int i=0;i <products.size();i++) {
-            if(products.get(i).getCharIndex() == (char)indexInProductList) {
-                indexInCart = i;
-            }
-        }
-        if(indexInCart != -1) {
-            products.remove(indexInCart);
-        }
-    }
     //this write the cart products in a file so that the items are saved when app is exited
     void saveProducts(Context context,String fileName) {
         StringBuffer stringBuffer  = new StringBuffer();

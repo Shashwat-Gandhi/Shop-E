@@ -16,20 +16,34 @@ public class start_Activity extends AppCompatActivity {
 
 
         /********adding 15 temporary products for now *********/
+        //add kurtas
+        int tempSize = ((MyApplication)this.getApplication()).products.size();
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Kurtas,i);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.Kurtas,tempSize + i);
         }
+
+        //add jeans
+        tempSize = ((MyApplication)this.getApplication()).products.size();
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Jeans,3 + i);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.Jeans,tempSize + i);
         }
+
+        //add shirts
+        tempSize = ((MyApplication)this.getApplication()).products.size();
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Shirts,6 + i);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.Shirts,tempSize + i);
         }
+
+        // add tshirts
+        tempSize = ((MyApplication)this.getApplication()).products.size();
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.TShirts,9 + i);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.TShirts,tempSize + i);
         }
+
+        // add tracks
+        tempSize = ((MyApplication)this.getApplication()).products.size();
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Tracks,12 + i);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.Tracks,tempSize + i);
         }
         /***************              *********/
 

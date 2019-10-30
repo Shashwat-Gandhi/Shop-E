@@ -1,6 +1,10 @@
 package com.example.shop_e;
 
 import android.app.Application;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.List;
 public class MyApplication extends Application {
     List<Product> products = new ArrayList<>();
     CartClass cart = new CartClass();
-    void addProduct(String name,String color,int prize,int src,int size,TypeOfProduct type,int index) {
+    void addProduct(String name,String color,int prize,int src,String size,TypeOfProduct type,int index) {
         Product product = new Product(name,color,prize,src,size,type,index);
         products.add(product);
     }
@@ -26,5 +30,7 @@ public class MyApplication extends Application {
     Product getCurrentProduct() { return  products.get((int)charTypeIndexOfProduct);}
 
     char charTypeIndexOfProduct = (char)(0);
+
+    showCartAdapter cartAdapter;
 
 }

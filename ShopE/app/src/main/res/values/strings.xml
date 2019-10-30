@@ -12,6 +12,12 @@
     <string name="cart">Cart</string>
     <string name="buy">Buy</string>
     <string name="image_of_the_product_in_cart">Image of the product in cart</string>
+    <string name="size">Size</string>
+    <string name="S">S</string>
+    <string name="M">M</string>
+    <string name="L">L</string>
+    <string name="XL">XL</string>
+    <string name="XXL">XXL</string>
 
 
     <!--common resources -->
@@ -26,4 +32,11 @@
 
     <!-- names of directories in internal memory -->
     <string name="userData">userData</string>
+
+
+    <string name="description_text_value">Here Comes the description of the product.
+
+        The product is awesome, just buy it.Making the description long just to see the scroll view option is not good.
+
+        Just buy the product already. You will love it.</string>
 </resources>

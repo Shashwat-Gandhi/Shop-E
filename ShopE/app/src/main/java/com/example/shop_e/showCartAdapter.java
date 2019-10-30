@@ -12,15 +12,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHolder> {
-    Context context;
-    List<Product> products;
+    final  public Context context;
+    private   List<Product> products;
+    TextView  cartTotalText;
 
-    public showCartAdapter(Context context, List<Product> products) {
+    public showCartAdapter(Context context, List<Product> products,TextView cartTotalText) {
         this.context = context;
         this.products = products;
+        this.cartTotalText = cartTotalText;
+    }
+    List<Product> getProducts() {
+        return products;
     }
 
     @NonNull
@@ -31,13 +37,44 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(products.get(position).getName());
         holder.price.setText("Rs " + String.valueOf(products.get(position).getPrice()));
-        holder.size.setText("Size : " + String.valueOf(products.get(position).getSize()));
+        holder.size.setText("Size : " + products.get(position).getSize());
         holder.color.setText("Color : " + products.get(position).getColor());
+        holder.image.setImageResource(products.get(position).getSrc());
         holder.removeFromCartButton.setText("Remove From Cart");
         holder.buyButton.setText("Buy Now");
+
+        holder.buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
+                ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
+                int totalPrice = 0;
+                for(int i=0;i < products.size();i++) {
+                    totalPrice += products.get(i).getPrice();
+                }
+                cartTotalText.setText(String.valueOf(totalPrice));
+
+                /******    don't forget add the invoice of the product        ******/
+
+
+            }
+        });
+        holder.removeFromCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
+                ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
+                int totalPrice = 0;
+                for(int i=0;i < products.size();i++) {
+                    totalPrice += products.get(i).getPrice();
+                }
+                cartTotalText.setText(String.valueOf(totalPrice));
+            }
+        });
+
     }
 
     @Override

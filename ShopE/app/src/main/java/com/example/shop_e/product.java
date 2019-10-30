@@ -1,6 +1,5 @@
 package com.example.shop_e;
 
-import android.graphics.Color;
 
 public class Product {
     public String name;
@@ -22,7 +21,7 @@ public class Product {
         this.src = src;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -46,7 +45,7 @@ public class Product {
         return src;
     }
 
-    public Product(String name, String color, int price, int src, int size, TypeOfProduct type,int index) {
+    public Product(String name, String color, int price, int src, String size, TypeOfProduct type,int index) {
         this.name = name;
         this.color = color;
         this.price = price;
@@ -56,7 +55,7 @@ public class Product {
         this.index = index;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
@@ -66,7 +65,7 @@ public class Product {
 
     private int price;
     private int src;
-    private int size;
+    private String size;
     private TypeOfProduct type;
     private int index;
     int getIndex() {

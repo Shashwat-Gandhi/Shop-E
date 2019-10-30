@@ -14,7 +14,8 @@
         android:text="@string/cart"
         android:textAlignment="center"
         android:textColor="#03A9F4"
-        app:autoSizeTextType="uniform"
+        android:textSize="60sp"
+        app:autoSizeTextType="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
