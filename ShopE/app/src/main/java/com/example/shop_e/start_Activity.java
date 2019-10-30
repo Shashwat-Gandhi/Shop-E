@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 
 public class start_Activity extends AppCompatActivity {
 
@@ -16,42 +14,31 @@ public class start_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        //reads and sets the cart_prodcuts and stringBufferOfCartProducts
-        StringBuffer stringBuffer = new StringBuffer();
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File(this.getFilesDir(),"userData")))) {
-            String line = reader.readLine();
-            while(line != null) {
-                stringBuffer.append(line).append('\n');
-                ((MyApplication)this.getApplication()).numProductInCart++;
-                line = reader.readLine();
-            }
-            ((MyApplication)this.getApplication()).cart_products = stringBuffer.toString();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            ((MyApplication)this.getApplication()).stringBufferOfBuyedProducts = stringBuffer;
-        }
-
 
         /********adding 15 temporary products for now *********/
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Kurtas);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Kurtas,i);
         }
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Jeans);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Jeans,3 + i);
         }
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Shirts);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Shirts,6 + i);
         }
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.TShirts);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.TShirts,9 + i);
         }
         for(int i=0;i < 3;i++) {
-            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Tracks);
+            ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,1,TypeOfProduct.Tracks,12 + i);
         }
         /***************              *********/
+
+
+        //this wil fill the cart at the start
+        ((MyApplication)this.getApplication()).cart.fillCart(new File(this.getFilesDir(),"userData"),this);
+
+
+
 
         Thread thread = new Thread() {
             @Override

@@ -1,6 +1,6 @@
 package com.example.shop_e;
 
-import androidx.annotation.ArrayRes;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class DashboardActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -63,7 +64,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
     public void viewCart(View view) {
         Intent intent = new Intent(this,ShowCartActivity.class);
-        startActivity(intent);
+        startActivity(intent, new Bundle());
     }
 
 }

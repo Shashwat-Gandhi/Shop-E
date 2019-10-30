@@ -8,15 +8,16 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_cart_image"
         android:layout_width="145dp"
         android:layout_height="211dp"
+        android:contentDescription="@string/image_of_the_product_in_cart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/black_shirt_pos1" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView_name_pro_in_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -26,14 +27,60 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView_cart_image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView_price_pro_in_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="62dp" />
+        android:text="Rs 320"
+        app:layout_constraintBottom_toTopOf="@+id/textView_size_pro_in_cart"
+        app:layout_constraintEnd_toEndOf="@+id/textView_name_pro_in_cart"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="@+id/textView_name_pro_in_cart"
+        app:layout_constraintTop_toBottomOf="@+id/textView_name_pro_in_cart" />
+
+    <TextView
+        android:id="@+id/textView_size_pro_in_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Size - XL"
+        app:layout_constraintBottom_toTopOf="@+id/textView_color_pro_in_cart"
+        app:layout_constraintEnd_toEndOf="@+id/textView_price_pro_in_cart"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textView_price_pro_in_cart"
+        app:layout_constraintTop_toBottomOf="@+id/textView_price_pro_in_cart" />
+
+    <TextView
+        android:id="@+id/textView_color_pro_in_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="Color - Black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView_size_pro_in_cart"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/textView_size_pro_in_cart" />
+
+
+    <Button
+        android:id="@+id/button_buy_in_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="@string/buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_remove_in_cart"
+        app:layout_constraintStart_toEndOf="@+id/imageView_cart_image" />
+
+    <Button
+        android:id="@+id/button_remove_in_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FC30E7D7"
+        android:text="@string/remove_from_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

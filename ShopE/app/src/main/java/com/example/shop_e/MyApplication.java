@@ -14,18 +14,17 @@ import java.util.List;
  * **/
 public class MyApplication extends Application {
     List<Product> products = new ArrayList<>();
-    Product currentProduct;
-    void addProduct(String name,String color,int prize,int src,int size,TypeOfProduct type) {
-        Product product = new Product(name,color,prize,src,size,type);
+    CartClass cart = new CartClass();
+    void addProduct(String name,String color,int prize,int src,int size,TypeOfProduct type,int index) {
+        Product product = new Product(name,color,prize,src,size,type,index);
         products.add(product);
     }
     Product getProduct(int position) {
         return products.get(position);
     }
 
-    String cart_products;
-    StringBuffer stringBufferOfBuyedProducts = new StringBuffer();
-    int numProductInCart = 0;
+    Product getCurrentProduct() { return  products.get((int)charTypeIndexOfProduct);}
+
     char charTypeIndexOfProduct = (char)(0);
 
 }

@@ -10,6 +10,8 @@
     <string name="notSaved">Add to Wish List</string>
     <string name="saved">Added to Wish List</string>
     <string name="cart">Cart</string>
+    <string name="buy">Buy</string>
+    <string name="image_of_the_product_in_cart">Image of the product in cart</string>
 
 
     <!--common resources -->
@@ -22,4 +24,6 @@
 
     <string name="key">keysfordash</string>
 
+    <!-- names of directories in internal memory -->
+    <string name="userData">userData</string>
 </resources>

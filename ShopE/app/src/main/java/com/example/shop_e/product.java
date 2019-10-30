@@ -46,13 +46,14 @@ public class Product {
         return src;
     }
 
-    public Product(String name, String color, int price, int src, int size, TypeOfProduct type) {
+    public Product(String name, String color, int price, int src, int size, TypeOfProduct type,int index) {
         this.name = name;
         this.color = color;
         this.price = price;
         this.src = src;
         this.size = size;
         this.type = type;
+        this.index = index;
     }
 
     public int getSize() {
@@ -63,8 +64,18 @@ public class Product {
         return type;
     }
 
-    public int price;
-    public int src;
-    public int size;
-    public TypeOfProduct type;
+    private int price;
+    private int src;
+    private int size;
+    private TypeOfProduct type;
+    private int index;
+    int getIndex() {
+        return index;
+    }
+    char getCharIndex() {
+        return (char)index;
+    }
+    void setIndex(int index) {
+        this.index = index;
+    }
 }

@@ -41,7 +41,7 @@ public class dashParentAdapter extends RecyclerView.Adapter<dashParentAdapter.Vi
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
         holder.recyclerView.setHasFixedSize(true);
 
-        adapterForChild = new dashChildAdapter(1,3,context);
+        adapterForChild = new dashChildAdapter(position * 3,3,context);
         holder.recyclerView.setAdapter(adapterForChild);
 
     }

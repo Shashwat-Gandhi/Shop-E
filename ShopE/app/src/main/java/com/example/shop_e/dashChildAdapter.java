@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
@@ -41,7 +40,7 @@ public class dashChildAdapter extends RecyclerView.Adapter<dashChildAdapter.View
 
         holder.textView.setText(((MyApplication)context.getApplicationContext()).products.get(startIndex + position).getName());
 
-        holder.imageView.setImageResource(((MyApplication)context.getApplicationContext()).products.get(startIndex + position).getSrc());
+        holder.imageView.setImageResource(((MyApplication)context.getApplicationContext()).getProduct(startIndex + position).getSrc());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
