@@ -33,9 +33,9 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(products.get(position).getName());
-        holder.price.setText(products.get(position).getPrice());
-        holder.size.setText(products.get(position).getSize());
-        holder.color.setText(products.get(position).getColor());
+        holder.price.setText("Rs " + String.valueOf(products.get(position).getPrice()));
+        holder.size.setText("Size : " + String.valueOf(products.get(position).getSize()));
+        holder.color.setText("Color : " + products.get(position).getColor());
         holder.removeFromCartButton.setText("Remove From Cart");
         holder.buyButton.setText("Buy Now");
     }

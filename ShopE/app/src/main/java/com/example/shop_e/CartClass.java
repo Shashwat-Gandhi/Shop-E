@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartClass {
-    public List<Product>products = new ArrayList<>();
+    private List<Product>products = new ArrayList<>();
 
     //adds the product in the product list in cart
     void addProduct(int indexInProductList, Context context) {
@@ -80,5 +80,8 @@ public class CartClass {
     }
     List<Product> getProducts() {
         return products;
+    }
+    void emptyAll() {
+        products.clear();
     }
 }
