@@ -10,11 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Invoice"
-            android:parentActivityName=".DashboardActivity"></activity>
-        <activity android:name=".ShowCartActivity" />
-        <activity android:name=".only_image_activity"
-            android:parentActivityName=".product_activity"/>
+        <activity android:name=".WishList"></activity>
+        <activity
+            android:name=".Invoice"
+            android:parentActivityName=".DashboardActivity" />
+        <activity
+            android:name=".ShowCartActivity"
+            android:parentActivityName=".DashboardActivity" />
+        <activity
+            android:name=".only_image_activity"
+            android:parentActivityName=".product_activity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".start_Activity">
             <intent-filter>
@@ -23,9 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".product_activity"
-            android:parentActivityName=".DashboardActivity"/>
+        <activity
+            android:name=".product_activity"
+            android:parentActivityName=".DashboardActivity" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".PopUpWindow"
+            android:parentActivityName=".product_activity"
+            android:theme="@style/AppTheme.PopUpTheme"></activity>
     </application>
 
 </manifest>

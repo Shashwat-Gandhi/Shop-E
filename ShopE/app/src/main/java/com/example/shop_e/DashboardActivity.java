@@ -35,18 +35,20 @@ public class DashboardActivity extends AppCompatActivity {
 
         categoryLists = new ArrayList<>();
 
-        categoryLists.add(new CategoryList(R.drawable.category_shirts_button));
-        categoryLists.add(new CategoryList(R.drawable.category_t_shirts_button));
         categoryLists.add(new CategoryList(R.drawable.category_kurtas_button));
         categoryLists.add(new CategoryList(R.drawable.category_jeans_button));
+        categoryLists.add(new CategoryList(R.drawable.category_shirts_button));
+        categoryLists.add(new CategoryList(R.drawable.category_t_shirts_button));
         categoryLists.add(new CategoryList(R.drawable.category_tracks_button));
 
-        adapter = new CategoryLayoutAdaptor(categoryLists,this);
+
+        recyclerViewForDash = findViewById(R.id.dash_main_recview);
+        adapter = new CategoryLayoutAdaptor(categoryLists,this,recyclerViewForDash);
         recyclerView.setAdapter(adapter);
 
         /******************************************/
         /********       for dashboard    ***********/
-       recyclerViewForDash = findViewById(R.id.dash_main_recview);
+
        recyclerViewForDash.setHasFixedSize(true);
        recyclerViewForDash.setLayoutManager(new LinearLayoutManager(this));
 
@@ -66,5 +68,8 @@ public class DashboardActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ShowCartActivity.class);
         startActivity(intent, new Bundle());
     }
+    public void viewWishList(View view) {
+        startActivity(new Intent(this,WishList.class));
 
+    }
 }

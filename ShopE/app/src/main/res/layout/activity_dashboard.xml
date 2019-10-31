@@ -3,6 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,15 +11,45 @@
     android:orientation="vertical"
     tools:context=".DashboardActivity">
 
-    <Button
-        android:id="@+id/viewCart"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#B31A1A"
-        android:text="@string/cart"
-        android:textColor="#B8A814"
-        android:textSize="18sp"
-        android:onClick="viewCart"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/viewWishList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B31A1A"
+            android:onClick="viewWishList"
+            android:text="@string/view_wish_list"
+            android:textColor="#B8A814"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/viewCart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/viewCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B31A1A"
+            android:onClick="viewCart"
+            android:text="@string/view_cart"
+            android:textColor="#B8A814"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <!--for category list recycle view only-->
     <androidx.recyclerview.widget.RecyclerView
@@ -36,6 +67,8 @@
         >
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
 
 </LinearLayout>
 

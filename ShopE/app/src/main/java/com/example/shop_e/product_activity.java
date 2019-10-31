@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class product_activity extends AppCompatActivity {
 
+    boolean presenceInWishListChanged = false;boolean isInWishList = false;int index;
+
     public Button[] button = new Button[5];
     int option = 0;
 
@@ -44,22 +46,43 @@ public class product_activity extends AppCompatActivity {
 
         //writing the price of product
         TextView priceText = findViewById(R.id.textView_price_of_product);
-        int index =((MyApplication)this.getApplication()).charTypeIndexOfProduct;
+        index =((MyApplication)this.getApplication()).charTypeIndexOfProduct;
         Product product = ((MyApplication)this.getApplication()).products.get(index);
         priceText.setText("Rs " + String.valueOf(product.getPrice()));
+
+        //initialize the checkBox
+        CheckBox checkBox = findViewById(R.id.checkBox_addToWishList);
+        isInWishList = ((MyApplication)this.getApplication()).wishList.findProduct(index);
+        if(isInWishList) {
+            checkBox.setChecked(true);
+        }
+        else {
+            checkBox.setChecked(false);
+        }
     }
 
     //activated when add to wish list is pressed
     public void saveUnsave(View view) {
+        presenceInWishListChanged = !presenceInWishListChanged;
+        isInWishList = !isInWishList;
         CheckBox checkBox = findViewById(R.id.checkBox_addToWishList);
-
-        if (checkBox.isChecked()) {
-            checkBox.setText(R.string.saved);
-        } else {
-            checkBox.setText(R.string.notSaved);
-        }
+        checkBox.setChecked(checkBox.isChecked());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+       //update your checkBox
+        CheckBox checkBox = findViewById(R.id.checkBox_addToWishList);
+        isInWishList = ((MyApplication)this.getApplication()).wishList.findProduct(index);
+        if(isInWishList) {
+            checkBox.setChecked(true);
+        }
+        else {
+            checkBox.setChecked(false);
+        }
+    }
 
     //when buy now is clicked
     public void buy_click(View view) {
@@ -79,11 +102,11 @@ public class product_activity extends AppCompatActivity {
                 break;
             case 1:
                 ((MyApplication)this.getApplication()).cart.getProduct
-                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("L");
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("M");
                 break;
             case 2:
                 ((MyApplication)this.getApplication()).cart.getProduct
-                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("M");
+                        (((MyApplication)this.getApplication()).cart.getNumProducts()-1).setSize("L");
                 break;
             case 3:
                 ((MyApplication)this.getApplication()).cart.getProduct
@@ -97,14 +120,29 @@ public class product_activity extends AppCompatActivity {
                 break;
         }
 
+        //shows the pop up window
+        startActivity(new Intent(this,PopUpWindow.class));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(presenceInWishListChanged) {
+            updateTheWishList();
+            presenceInWishListChanged = false;           //never forget to set presence to false after updating the wish list
+        }
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(presenceInWishListChanged) {
+            updateTheWishList();
+            presenceInWishListChanged = false;           //never forget to set presence to false after updating the wish list
+        }
 
-        //updateCart();
     }
 
 
@@ -137,5 +175,22 @@ public class product_activity extends AppCompatActivity {
     public void viewCart(View view) {
         Intent intent = new Intent(this,ShowCartActivity.class);
         startActivity(intent, new Bundle());
+    }
+
+    //never forget to set presence to false after updating the wish list
+    private void updateTheWishList() {
+        if(isInWishList) {
+            ((MyApplication)this.getApplication()).wishList.addProduct(index,this);
+
+        }
+        else {
+            ((MyApplication)this.getApplication()).wishList.remove(index);
+        }
+    }
+    public void openSingleImage(View v) {
+        Intent intent = new Intent(this,only_image_activity.class);
+        intent.putExtra("com.example.shop_e.only_image_image",((MyApplication)this.getApplication()).products.get(index).getSrc());
+        startActivity(intent);
+
     }
 }

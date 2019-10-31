@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHolder> {
@@ -49,16 +49,25 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
         holder.buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Product product = products.get(position);
                 ((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
+
+                /******    don't forget add the invoice of the product        ******/
+
+
+                //remove the product from wishList
+                ((MyApplication) context.getApplicationContext()).wishList.remove(product.getSrc(), false);
+
+                //notify that adapter that the dataset has changed
                 ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
+
+
+                //update to other views
                 int totalPrice = 0;
                 for(int i=0;i < products.size();i++) {
                     totalPrice += products.get(i).getPrice();
                 }
                 cartTotalText.setText(String.valueOf(totalPrice));
-
-                /******    don't forget add the invoice of the product        ******/
-
 
             }
         });

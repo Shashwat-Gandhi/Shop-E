@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="category_button_dimensions">80dp</dimen>
+    <dimen name="category_button_dimensions">60dp</dimen>
     <dimen name="dash_product_dimension">160dp</dimen>
     <dimen name="dash_product_dimension_x">250dp</dimen>
     <dimen name="dash_product_dimension_y">180dp</dimen>

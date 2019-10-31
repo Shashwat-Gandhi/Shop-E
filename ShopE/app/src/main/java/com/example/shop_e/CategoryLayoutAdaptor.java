@@ -15,10 +15,12 @@ import java.util.List;
 public class CategoryLayoutAdaptor extends RecyclerView.Adapter<CategoryLayoutAdaptor.ViewHolder> {
     private List<CategoryList>categoryLists;
     private Context context;
+    private RecyclerView recyclerViewForDash;
 
-    public CategoryLayoutAdaptor(List<CategoryList> categoryLists, Context context) {
+    public CategoryLayoutAdaptor(List<CategoryList> categoryLists, Context context, RecyclerView recyclerViewForDash) {
         this.categoryLists = categoryLists;
         this.context = context;
+        this.recyclerViewForDash = recyclerViewForDash;
     }
 
     @NonNull
@@ -29,9 +31,16 @@ public class CategoryLayoutAdaptor extends RecyclerView.Adapter<CategoryLayoutAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
        CategoryList category = categoryLists.get(position);
        holder.imageButton.setImageResource(category.getImageSrc());
+       holder.imageButton.setOnClickListener(new View.OnClickListener() {
+
+           @Override
+           public void onClick(View v) {
+               recyclerViewForDash.smoothScrollToPosition(position);
+           }
+       });
     }
 
     @Override

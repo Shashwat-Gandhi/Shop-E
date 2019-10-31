@@ -23,6 +23,9 @@ public class MyApplication extends Application {
         Product product = new Product(name,color,prize,src,size,type,index);
         products.add(product);
     }
+    public void setCurrentProduct(int index) {
+        this.charTypeIndexOfProduct = (char)index;
+    }
     Product getProduct(int position) {
         return products.get(position);
     }
@@ -30,6 +33,10 @@ public class MyApplication extends Application {
     Product getCurrentProduct() { return  products.get((int)charTypeIndexOfProduct);}
 
     char charTypeIndexOfProduct = (char)(0);
+
+
+    CartClass wishList = new CartClass();       //since the wish list is very similar to cart so this is what i did
+
 
     showCartAdapter cartAdapter;
 

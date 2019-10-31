@@ -12,6 +12,26 @@ import java.util.List;
 public class CartClass {
     public List<Product>products = new ArrayList<>();
 
+    void remove(int indexInProductList) {
+        char index = (char)indexInProductList;
+        for(int i=0;i < products.size();i++) {
+            if(products.get(i).getCharIndex() == index) {
+                products.remove(i);
+                break;
+            }
+        }
+    }
+    void remove(int src,boolean isItIndexInProductList) {
+        if(!isItIndexInProductList && products.size() > 0) {
+            for(int i=0;i < products.size();i++) {
+                if(products.get(i).getSrc() == src) {
+                    products.remove(i);
+                    break;
+                }
+            }
+        }
+    }
+
     //adds new instance and not a reference to the product in the product list in cart
     void addProduct(int indexInProductList, Context context) {
         Product pro = ((MyApplication)context.getApplicationContext()).products.get(indexInProductList);
@@ -26,7 +46,7 @@ public class CartClass {
             stringBuffer.append(products.get(i).getCharIndex()).append('\n');
         }
         try {
-            FileOutputStream outputStream = context.openFileOutput("userData",Context.MODE_PRIVATE);
+            FileOutputStream outputStream = context.openFileOutput(fileName,Context.MODE_PRIVATE);
             outputStream.write(stringBuffer.toString().getBytes());
             outputStream.close();
         }
@@ -46,7 +66,7 @@ public class CartClass {
 
     //this will fill the cart from the file saved on internal memory
     void fillCart(File file,Context context) {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("userData")))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
             while(line != null) {
                 for(int i=0;i < line.length();i++) {

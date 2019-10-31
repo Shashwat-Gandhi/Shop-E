@@ -18,7 +18,10 @@
     <string name="L">L</string>
     <string name="XL">XL</string>
     <string name="XXL">XXL</string>
-
+    <string name="view_cart">View Cart</string>
+    <string name="item_added_to_cart">Item added to cart</string>
+    <string name="image_of_product">image of the product</string>
+    <string name="view_wish_list">View Wish List</string>
 
     <!--common resources -->
     <string name="temp_text">temp_text</string>

@@ -8,10 +8,10 @@
 
 
     <ImageView
+        android:id="@+id/only_image_image_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/only_image_image_id"
-        android:src="@drawable/shirt_white"
-        />
+        android:contentDescription="@string/image_of_product"
+        android:src="@drawable/shirt_white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
