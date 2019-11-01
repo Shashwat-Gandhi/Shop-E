@@ -29,6 +29,11 @@ public class product_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_activity);
 
+        //writes the name of the product
+        TextView nameText = findViewById(R.id.product_activity_name_text);
+        nameText.setText(((MyApplication)this.getApplication()).getCurrentProduct().getName());
+
+        //setting up the image
         ImageView imageView = findViewById(R.id.imageView);
         imageView.setImageResource(((MyApplication)this.getApplication()).getProduct((int)((MyApplication)this.getApplication()).charTypeIndexOfProduct).getSrc());
 
