@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShowCartActivity extends Activity {
     RecyclerView recyclerViewForCart;
 
@@ -23,16 +26,26 @@ public class ShowCartActivity extends Activity {
     public void checkOut(View v) {
         Intent intent = new Intent(this,Invoice.class);
 
-        ((MyApplication)this.getApplication()).cart.emptyAll();
-        ((MyApplication)this.getApplication()).cartAdapter.notifyDataSetChanged();
-        TextView cartTotalText = findViewById(R.id.textView_cart_total_amount);
-        cartTotalText.setText("");
+
         startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        TextView cartTotalText = findViewById(R.id.textView_cart_total_amount);
+        if(((MyApplication)this.getApplication()).cart.getNumProducts() == 0) {
+            cartTotalText.setText("");
+        }
+        else {
+            int totalPrice =0 ;
+            List<Product>products = ((MyApplication)this.getApplication()).cart.getProducts();
+            for(int i=0;i <products.size();i++) {
+                totalPrice += products.get(i).getPrice();
+            }
+            cartTotalText.setText(String.valueOf(totalPrice));
+        }
     }
 
     @Override

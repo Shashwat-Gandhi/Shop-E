@@ -22,6 +22,10 @@
     <string name="item_added_to_cart">Item added to cart</string>
     <string name="image_of_product">image of the product</string>
     <string name="view_wish_list">View Wish List</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="color">Color</string>
+    <string name="total">Total</string>
 
     <!--common resources -->
     <string name="temp_text">temp_text</string>

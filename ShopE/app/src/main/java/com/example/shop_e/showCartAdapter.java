@@ -2,6 +2,8 @@ package com.example.shop_e;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHolder> {
     final  public Context context;
@@ -50,10 +54,16 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Product product = products.get(position);
-                ((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
 
-                /******    don't forget add the invoice of the product        ******/
+                Intent intent = new Intent(context,Invoice.class);
+                intent.putExtra("com.example.shop_e.did_buy",true);
+                intent.putExtra("com.example.shop_e.product.name",product.getName());
+                intent.putExtra("com.example.shop_e.product.size",product.getSize());
+                intent.putExtra("com.example.shop_e.product.color",product.getColor());
+                intent.putExtra("com.example.shop_e.product.price",product.getPrice());
 
+                //((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
+                ((MyApplication)context.getApplicationContext()).cart.products.remove(product);
 
                 //remove the product from wishList
                 ((MyApplication) context.getApplicationContext()).wishList.remove(product.getSrc(), false);
@@ -61,13 +71,14 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
                 //notify that adapter that the dataset has changed
                 ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
 
-
                 //update to other views
                 int totalPrice = 0;
                 for(int i=0;i < products.size();i++) {
                     totalPrice += products.get(i).getPrice();
                 }
                 cartTotalText.setText(String.valueOf(totalPrice));
+
+                startActivity(context,intent,new Bundle());
 
             }
         });

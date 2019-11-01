@@ -87,8 +87,38 @@ public class product_activity extends AppCompatActivity {
     //when buy now is clicked
     public void buy_click(View view) {
         //open buy activity
-        /*********** don't forget to set the size of the product before showing the invoice         *********/
+        Product product = ((MyApplication)this.getApplication()).products.get(index);
 
+        /*********** don't forget to set the size of the product before showing the invoice         *********/
+        //((MyApplication) this.getApplication()).cart.addProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct, this);
+        switch (option) {
+            case 0:
+                product.setSize("S");
+                break;
+            case 1:
+                product.setSize("M");
+                break;
+            case 2:
+                product.setSize("L");
+                break;
+            case 3:
+                product.setSize("XL");
+                break;
+            case 4:
+                product.setSize("XXL");
+                break;
+            default:
+                break;
+        }
+
+        Intent intent = new Intent(this,Invoice.class);
+        intent.putExtra("com.example.shop_e.did_buy",true);
+        intent.putExtra("com.example.shop_e.product.name",product.getName());
+        intent.putExtra("com.example.shop_e.product.size",product.getSize());
+        intent.putExtra("com.example.shop_e.product.color",product.getColor());
+        intent.putExtra("com.example.shop_e.product.price",product.getPrice());
+
+        startActivity(intent);
     }
 
     //when to add to cart is clicked
