@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/order_image"
+        android:layout_width="140dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toTopOf="@+id/order_view_invoice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blacktshirt"
+        app:layout_editor_absoluteX="0dp"
+        app:layout_editor_absoluteY="0dp"/>
+
+    <TextView
+        android:id="@+id/order_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="@string/title_name"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/order_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/order_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Rs 320"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/order_name"
+        app:layout_constraintStart_toStartOf="@+id/order_name"
+        app:layout_constraintTop_toBottomOf="@+id/order_name" />
+
+    <TextView
+        android:id="@+id/order_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Color : Black"
+        app:layout_constraintEnd_toEndOf="@+id/order_price"
+        app:layout_constraintStart_toStartOf="@+id/order_price"
+        app:layout_constraintTop_toBottomOf="@+id/order_price" />
+
+    <TextView
+        android:id="@+id/order_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Size : L"
+        app:layout_constraintEnd_toEndOf="@+id/order_color"
+        app:layout_constraintStart_toStartOf="@+id/order_color"
+        app:layout_constraintTop_toBottomOf="@+id/order_color" />
+
+    <Button
+        android:id="@+id/order_view_invoice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="View Invoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_size" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

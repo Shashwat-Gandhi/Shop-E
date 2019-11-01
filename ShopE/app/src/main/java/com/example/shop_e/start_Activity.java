@@ -23,6 +23,9 @@ public class start_Activity extends AppCompatActivity {
         //this will fill the wish list
         ((MyApplication)this.getApplication()).wishList.fillCart(new File(this.getFilesDir(),"wishList"),this);
 
+        //this will fill the user previous order list
+        ((MyApplication)this.getApplication()).userProducts.fillCart(new File(this.getFilesDir(),"userProducts"),this);
+
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -67,7 +70,7 @@ public class start_Activity extends AppCompatActivity {
         //for(int i=0;i < 3;i++) {
         // ((MyApplication)this.getApplication()).addProduct("Black T-Shirt","Black",320,R.drawable.black_shirt_pos1,"S",TypeOfProduct.Jeans,tempSize + i);
         addProduct("Black Jeans","Black",120,R.drawable.black_jeans,"S",TypeOfProduct.Jeans,tempSize);
-        addProduct("Blue Kurta","Blue",230,R.drawable.blue_jeans,"S",TypeOfProduct.Jeans,tempSize + 1);
+        addProduct("Blue Jeans","Blue",230,R.drawable.blue_jeans,"S",TypeOfProduct.Jeans,tempSize + 1);
         addProduct("Grey Jeans","Grey",230,R.drawable.gey_jeans,"S",TypeOfProduct.Jeans,tempSize + 2);
         //  }
 

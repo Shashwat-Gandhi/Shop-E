@@ -1,18 +1,14 @@
 package com.example.shop_e;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class DashboardActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -71,5 +67,8 @@ public class DashboardActivity extends AppCompatActivity {
     public void viewWishList(View view) {
         startActivity(new Intent(this,WishList.class));
 
+    }
+    public void viewYourOrders(View view) {
+        startActivity(new Intent(this,YourOrders.class));
     }
 }

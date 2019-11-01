@@ -1,5 +1,6 @@
 package com.example.shop_e;
 
+//now i wonder why i even made this class
 public class childItemForDash {
     String title;
     int src;

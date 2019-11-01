@@ -24,9 +24,10 @@
             android:text="@string/view_wish_list"
             android:textColor="#B8A814"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/viewCart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/your_orders"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toEndOf="@id/guideline4" />
+
         <Button
             android:id="@+id/viewCart"
             android:layout_width="0dp"
@@ -36,16 +37,38 @@
             android:text="@string/view_cart"
             android:textColor="#B8A814"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/viewWishList"
+            app:layout_constraintStart_toEndOf="@id/guideline5"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <Button
+            android:id="@+id/your_orders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B31A1A"
+            android:text="@string/your_orders"
+            android:textColor="#B8A814"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="viewYourOrders"
+            />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
+            android:id="@+id/guideline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

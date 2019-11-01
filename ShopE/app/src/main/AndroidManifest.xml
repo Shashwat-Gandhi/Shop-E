@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WishList"></activity>
+        <activity android:name=".YourOrders"></activity>
+        <activity android:name=".WishList" />
         <activity
             android:name=".Invoice"
             android:parentActivityName=".DashboardActivity" />
@@ -35,7 +36,7 @@
         <activity
             android:name=".PopUpWindow"
             android:parentActivityName=".product_activity"
-            android:theme="@style/AppTheme.PopUpTheme"></activity>
+            android:theme="@style/AppTheme.PopUpTheme" />
     </application>
 
 </manifest>

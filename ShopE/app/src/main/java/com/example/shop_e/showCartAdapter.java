@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
@@ -55,6 +52,10 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
             public void onClick(View v) {
                 Product product = products.get(position);
 
+                //adds in the bought user products
+                ((MyApplication)context.getApplicationContext()).userProducts.addProduct(product);
+                ((MyApplication)context.getApplicationContext()).userProducts.saveProducts(context,"userProducts");
+
                 Intent intent = new Intent(context,Invoice.class);
                 intent.putExtra("com.example.shop_e.did_buy",true);
                 intent.putExtra("com.example.shop_e.product.name",product.getName());
@@ -64,9 +65,11 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
 
                 //((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
                 ((MyApplication)context.getApplicationContext()).cart.products.remove(product);
+                ((MyApplication)context.getApplicationContext()).cart.saveProducts(context,"userData");
 
                 //remove the product from wishList
                 ((MyApplication) context.getApplicationContext()).wishList.remove(product.getSrc(), false);
+                ((MyApplication)context.getApplicationContext()).wishList.saveProducts(context,"wishList");
 
                 //notify that adapter that the dataset has changed
                 ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
@@ -86,6 +89,7 @@ public class showCartAdapter extends RecyclerView.Adapter<showCartAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 ((MyApplication)context.getApplicationContext()).cart.products.remove(products.get(position));
+                ((MyApplication)context.getApplicationContext()).cart.saveProducts(context,"userData");
                 ((MyApplication)context.getApplicationContext()).cartAdapter.notifyDataSetChanged();
                 int totalPrice = 0;
                 for(int i=0;i < products.size();i++) {

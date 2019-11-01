@@ -1,17 +1,16 @@
 package com.example.shop_e;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
+//the adapter for the category button layout in the dashboard
+//nothing new or special in it
 public class CategoryLayoutAdaptor extends RecyclerView.Adapter<CategoryLayoutAdaptor.ViewHolder> {
     private List<CategoryList>categoryLists;
     private Context context;

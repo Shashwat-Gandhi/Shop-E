@@ -26,7 +26,7 @@
     <string name="price">Price</string>
     <string name="color">Color</string>
     <string name="total">Total</string>
-
+    <string name="your_orders">Your Orders</string>
     <!--common resources -->
     <string name="temp_text">temp_text</string>
 

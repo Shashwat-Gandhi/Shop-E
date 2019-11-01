@@ -10,9 +10,16 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+
+
 public class product_activity extends AppCompatActivity {
 
-    boolean presenceInWishListChanged = false;boolean isInWishList = false;int index;
+  //  boolean presenceInWishListChanged = false;
+    //sorry but the presenceInWishList thing can't be because of the user being able to bypass onPause
+    //so have to update it every time after changing it
+
+    boolean isInWishList = false;int index;
 
     public Button[] button = new Button[5];
     int option = 0;
@@ -63,10 +70,12 @@ public class product_activity extends AppCompatActivity {
 
     //activated when add to wish list is pressed
     public void saveUnsave(View view) {
-        presenceInWishListChanged = !presenceInWishListChanged;
         isInWishList = !isInWishList;
+        updateTheWishList();         //this way it might take some extra time but it is worth it
+        ((MyApplication)this.getApplication()).wishList.saveProducts(this,"wishList");
+
         CheckBox checkBox = findViewById(R.id.checkBox_addToWishList);
-        checkBox.setChecked(checkBox.isChecked());
+        checkBox.setChecked(isInWishList);
     }
 
     @Override
@@ -89,8 +98,11 @@ public class product_activity extends AppCompatActivity {
         //open buy activity
         Product product = ((MyApplication)this.getApplication()).products.get(index);
 
+        //remove from wishlist and update its local file
+        ((MyApplication)this.getApplication()).wishList.remove(index);
+        ((MyApplication)this.getApplication()).wishList.saveProducts(this,"wishList");
+
         /*********** don't forget to set the size of the product before showing the invoice         *********/
-        //((MyApplication) this.getApplication()).cart.addProduct(((MyApplication) this.getApplication()).charTypeIndexOfProduct, this);
         switch (option) {
             case 0:
                 product.setSize("S");
@@ -111,6 +123,12 @@ public class product_activity extends AppCompatActivity {
                 break;
         }
 
+        //update the user product list as promised
+        ((MyApplication)this.getApplication()).userProducts.addProduct(product);
+        ((MyApplication)this.getApplication()).userProducts.saveProducts(this,"userProducts");
+
+
+        //there are other better ways but just why not!
         Intent intent = new Intent(this,Invoice.class);
         intent.putExtra("com.example.shop_e.did_buy",true);
         intent.putExtra("com.example.shop_e.product.name",product.getName());
@@ -150,31 +168,11 @@ public class product_activity extends AppCompatActivity {
                 break;
         }
 
+        ((MyApplication)this.getApplication()).cart.saveProducts(this,"userData");
+
         //shows the pop up window
         startActivity(new Intent(this,PopUpWindow.class));
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if(presenceInWishListChanged) {
-            updateTheWishList();
-            presenceInWishListChanged = false;           //never forget to set presence to false after updating the wish list
-        }
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(presenceInWishListChanged) {
-            updateTheWishList();
-            presenceInWishListChanged = false;           //never forget to set presence to false after updating the wish list
-        }
-
-    }
-
 
     public void optionSelected_S(View v) {
         button[option].setBackgroundColor(Color.GRAY);
@@ -211,7 +209,6 @@ public class product_activity extends AppCompatActivity {
     private void updateTheWishList() {
         if(isInWishList) {
             ((MyApplication)this.getApplication()).wishList.addProduct(index,this);
-
         }
         else {
             ((MyApplication)this.getApplication()).wishList.remove(index);

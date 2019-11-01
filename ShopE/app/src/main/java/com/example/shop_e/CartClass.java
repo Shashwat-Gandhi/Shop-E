@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+//This class is like a parent class for wishlist ,cart and user orders,etc
+//easies the process of storing and updating carts or bags as you say
 public class CartClass {
     public List<Product>products = new ArrayList<>();
 
@@ -39,10 +41,17 @@ public class CartClass {
         products.add(product);
     }
 
+    //add new instance and not a reference to the product in the product list in cart
+    void addProduct(Product product) {
+        Product product1 = new Product(product.getName(),product.getColor(),product.getPrice(),product.getSrc(),
+                                        product.getSize(),product.getType(),product.getIndex());
+        products.add(product1);
+    }
     //this write the cart products in a file so that the items are saved when app is exited
     void saveProducts(Context context,String fileName) {
         StringBuffer stringBuffer  = new StringBuffer();
-        for(int i=0;i < products.size();i++) {
+
+        for(int i=0;i < this.products.size();i++) {
             stringBuffer.append(products.get(i).getCharIndex()).append('\n');
         }
         try {
@@ -68,10 +77,16 @@ public class CartClass {
     void fillCart(File file,Context context) {
         try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
+            for(int i=0;i < line.length();i++) {
+                if(line.charAt(i)!= ' ' && line.charAt(i)!= '\n') {
+                    products.add(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(i)));
+                }
+            }
+            line = reader.readLine();
             while(line != null) {
                 for(int i=0;i < line.length();i++) {
                     if(line.charAt(i)!= ' ' && line.charAt(i)!= '\n') {
-                        products.add(((MyApplication)context.getApplicationContext()).getProduct(line.charAt(i)));
+                        products.add(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(i)));
                     }
                 }
                 line = reader.readLine();
