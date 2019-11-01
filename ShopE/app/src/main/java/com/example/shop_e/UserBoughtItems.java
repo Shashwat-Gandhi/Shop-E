@@ -18,16 +18,31 @@ public class UserBoughtItems extends CartClass {
 
             //products.add(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
             this.addProduct(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
-            products.get(products.size()- 1).setSize(String.valueOf(line.charAt(2)));
+
+            //since size can be XL XXL also which is two nad three characters long
+            String size = "";
+            for(int i=2;i < line.length();i++) {
+                if(line.charAt(i) != '\n' && line.charAt(i) != ' ') {
+                    size += line.charAt(i);
+                }
+            }
+            products.get(products.size()- 1).setSize(size);
 
             line = reader.readLine();
             while(line != null) {
 
-            //products.add(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
-            this.addProduct(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
-            products.get(products.size()- 1).setSize(String.valueOf(line.charAt(2)));
+                //products.add(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
+                this.addProduct(((MyApplication)context.getApplicationContext()).getProduct((int)line.charAt(0)));
+                //since size can be XL XXL also which is two nad three characters long
+                size = "";
+                for(int i=2;i < line.length();i++) {
+                    if(line.charAt(i) != '\n' && line.charAt(i) != ' ') {
+                        size += line.charAt(i);
+                    }
+                }
+                products.get(products.size()- 1).setSize(size);
 
-            line = reader.readLine();
+                line = reader.readLine();
 
             }
         }

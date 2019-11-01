@@ -27,6 +27,16 @@ public class ShowCartActivity extends Activity {
         Intent intent = new Intent(this,Invoice.class);
 
 
+        //adds in the bought user products
+        List<Product>products = ((MyApplication)this.getApplication()).cart.getProducts();
+        for(int i=0;i < products.size();i++) {
+            ((MyApplication)this.getApplicationContext()).userProducts.addProduct(products.get(i));
+        }
+
+
+        ((MyApplication)this.getApplicationContext()).userProducts.saveProducts(this,"userProducts");
+
+
         startActivity(intent);
     }
 

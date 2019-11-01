@@ -62,8 +62,10 @@ public class product_activity extends AppCompatActivity {
         isInWishList = ((MyApplication)this.getApplication()).wishList.findProduct(index);
         if(isInWishList) {
             checkBox.setChecked(true);
+            checkBox.setText("Added to Wish List");
         }
         else {
+            checkBox.setText("Add to Wish List");
             checkBox.setChecked(false);
         }
     }
@@ -76,6 +78,8 @@ public class product_activity extends AppCompatActivity {
 
         CheckBox checkBox = findViewById(R.id.checkBox_addToWishList);
         checkBox.setChecked(isInWishList);
+        if(isInWishList) {checkBox.setText("Added to Wish List");}
+        else {checkBox.setText("Add to Wish List");}
     }
 
     @Override
