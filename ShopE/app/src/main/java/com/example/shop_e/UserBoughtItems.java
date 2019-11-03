@@ -11,7 +11,7 @@ public class UserBoughtItems extends CartClass {
 
     @Override
     void fillCart(File file, Context context) {
-        super.fillCart(file, context);
+        //super.fillCart(file, context);
 
         try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
@@ -53,7 +53,7 @@ public class UserBoughtItems extends CartClass {
 
     @Override
     void saveProducts(Context context, String fileName) {
-        super.saveProducts(context, fileName);
+        //super.saveProducts(context, fileName);
 
         StringBuffer stringBuffer  = new StringBuffer();
 
