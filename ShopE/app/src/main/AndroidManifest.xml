@@ -10,8 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YourOrders"></activity>
-        <activity android:name=".WishList" />
+        <activity android:name=".YourOrders"
+            android:parentActivityName=".DashboardActivity"
+            ></activity>
+        <activity android:name=".WishList"
+            android:parentActivityName=".DashboardActivity"/>
         <activity
             android:name=".Invoice"
             android:parentActivityName=".DashboardActivity" />
